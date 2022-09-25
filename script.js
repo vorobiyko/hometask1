@@ -1,3 +1,4 @@
+//start params----------------------------------------------------------------------------------------------------------
 let arrNote = []
 let notesHTML = '';
 let header = `
@@ -29,7 +30,7 @@ let closeNote = document.querySelector('.delete')
 let add_note = document.querySelector('.save')
 let closeBtn = document.querySelector('.close')
 
-//
+
 //load default note-----------------------------------------------------------------------------------------------------
 const renderNotes = () => {
     arrNote.map(el => notesHTML += el)
