@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+        <table id="main-note" class="table-node">
+<!--            js code-->
+        </table>
+        <form class="add-note-form">
+            <input type="text" placeholder="Name" id="name">
+            <select name="" id="category-choose">
+                <option value="Idea">Idea</option>
+                <option value="Task">Task</option>
+                <option value="Random Thought">Random Thought</option>
+            </select>
+            <input type="text" placeholder="Content" id="content">
+            <input type="date" name="" id="dates" placeholder="DATAS">
+            <button class="save" type="button">
+                <img src="./icons/add.svg" alt="">
+            </button>
+            <button class="delete">
+                <img src="./icons/close.svg">
+            </button>
+        </form>
+        <form class="change-note-form">
+            <input type="text" placeholder="Name" id="change-name">
+            <select name="" id="change-category-choose">
+                <option value="Idea">Idea</option>
+                <option value="Task">Task</option>
+                <option value="Random Thought">Random Thought</option>
+            </select>
+            <input type="text" placeholder="Content" id="change-content">
+            <input type="date" name="" id="change-dates" placeholder="DATAS">
+            <button class="change" type="button">
+                <img src="./icons/add.svg" alt="">
+            </button>
+            <button class="close" type="button">
+                <img src="./icons/close.svg">
+            </button>
+        </form>
+
+        <button class="create-note">
+            <h2>Create Note</h2>
+        </button>
+
+    </main>
+    <footer>
+        <table>
+            <tr class="nav-tr">
+                <td> <h1>Note Category</h1></td>
+                <td><h1>Active</h1></td>
+                <td><h1>Archived</h1></td>
+            </tr>
+            <tr class="task">
+                <td class="task-logo">
+                    <div class="task-logo-description">
+                        <img src="./icons/task.svg">
+                        <h3>Task</h3>
+                    </div>
+                </td>
+                <td class="active">
+                    <h3 id="task-category">1</h3>
+                </td>
+                <td class="archived">
+                    <h3 id="task-category-archived">12</h3>
+                </td>
+            </tr>
+            <tr class="task">
+                <td class="task-logo">
+                    <div class="task-logo-description">
+                        <img src="./icons/idea.svg">
+                        <h3>Idea</h3>
+                    </div>
+                </td>
+                <td class="active">
+                    <h3 id="idea">1</h3>
+                </td>
+                <td class="archived">
+                    <h3 id="idea-category-archived">12</h3>
+                </td>
+            </tr>
+            <tr class="task">
+                <td class="task-logo">
+                    <div class="task-logo-description">
+                        <img src="./icons/gear.svg">
+                        <h3>Random Thought</h3>
+                    </div>
+                </td>
+                <td class="active">
+                    <h3 id="randomTh">1</h3>
+                </td>
+                <td class="archived">
+                    <h3 id="randomTh-category-archived">12</h3>
+                </td>
+            </tr>
+        </table>
+    </footer>
+<script type="module" src="script.js"></script>
+</body>
+</html>

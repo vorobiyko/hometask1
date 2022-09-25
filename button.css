@@ -1,0 +1,15 @@
+button{
+    outline: none;
+    border: none;
+    margin: 20px 0;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    outline: 1px solid rgba(0,0,0, 0.3);
+}
