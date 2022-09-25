@@ -254,8 +254,8 @@ btnAdd.addEventListener('click',()=>{
     btnAdd.style.pointerEvents = 'none'
     addNote();
     getAllBtnDelete();
+    getAllBtnArchive()
     getAllBtnChange();
-    openArchiveNotes()
 })
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -278,7 +278,6 @@ const deleteNote = (id) => {
     currentNote.remove()
     arrNote.splice(numberId,1)
     AnalystNote()
-    openArchiveNotes()
 }
 //----------------------------------------------------------------------------------------------------------------------
 
