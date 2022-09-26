@@ -64,7 +64,7 @@ const loadNote = () => {
             <td class="buttons-interface">
                 <div class="buttons-icons nav-icons">
                     <img class="icons change-write" id=${i} src="./icons/write.svg">
-                    <img class="icons archive-btn" id=${'archive'+i} src="./icons/archive.svg">
+                    <img class="icons archive-btn" id=${'archive'+i} src="./icons/archive.svg" name="t">
                     <img class="icons delete-note" id=${"deleteBtn"+i}  src="./icons/trash.svg">
                 </div>
             </td>
@@ -128,6 +128,7 @@ const changeNote = (id) => {
         btnAdd.style.pointerEvents = 'auto'
     })
     AnalystNote()
+
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -210,7 +211,7 @@ const saveNote = () => {
             <td class="buttons-interface">
                 <div class="buttons-icons nav-icons">
                     <img class="icons change-write" id=${arrNote.length} src="./icons/write.svg">
-                    <img class="icons archive-btn" id=${'archive'+arrNote.length} src="./icons/archive.svg">
+                    <img class="icons archive-btn" id=${'archive'+arrNote.length} src="./icons/archive.svg" name="t">
                      <img class="icons delete-note" id=${"deleteBtn"+arrNote.length} src="./icons/trash.svg">
                 </div>
             </td>
@@ -278,6 +279,7 @@ const deleteNote = (id) => {
     currentNote.remove()
     arrNote.splice(numberId,1)
     AnalystNote()
+
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -324,10 +326,10 @@ AnalystNote()
 let arrNoteChoose = []
 const getAllBtnArchive = () => {
     let nodeArchiveBtn =  document.querySelectorAll(".archive-btn")
-    nodeArchiveBtn.forEach(el => el.name = 't')
     nodeArchiveBtn.forEach(el=>el.addEventListener('click',()=>{
-        if (el.name == 't'){
+        if (el.name === 't'){
             ArchiveNotes(el.id)
+
         }
         else {
             BackArchiveNotes(el.id)
@@ -344,7 +346,8 @@ const ArchiveNotes = (id) => {
     let listNoteArchive = document.getElementById(`task+${indexClick}`)
     listNoteArchive.attributes[0].value = 'task current-note archive'
     arrNoteChoose.push(listNoteArchive)
-    arrNoteChoose.forEach(el => el.style.display = 'none')
+    arrNoteChoose.forEach(el => (el.children[5].children[0].children[2].style.display = 'none'))
+    listNoteArchive.style.display = 'none'
     document.getElementById(`${id}`).name = 'f'
     AnalystNote()
 }
@@ -357,8 +360,10 @@ const BackArchiveNotes = (id) => {
     let listNoteArchive = document.getElementById(`task+${indexClick}`)
     listNoteArchive.attributes[0].value = 'task current-note active-note'
     let elBackUp = []
-    arrNoteChoose.map((el,index)=>(el===listNoteArchive)?elBackUp = arrNoteChoose.splice(index,1):'')
-    elBackUp.forEach(el => el.style.display = 'none')
+    let searchEl =  arrNoteChoose.indexOf(listNoteArchive)
+    elBackUp = arrNoteChoose.splice(searchEl,1)
+    listNoteArchive.style.display = 'none'
+    listNoteArchive.children[5].children[0].children[2].style.display = ''
     document.getElementById(`${id}`).name = 't'
     AnalystNote()
 }
@@ -368,15 +373,18 @@ getAllBtnArchive()
 
 //method show or hide archived note-------------------------------------------------------------------------------------
 const openArchiveNotes = () => {
-    let currentNote = document.querySelectorAll('.current-note')
+
     let openBtn = document.querySelector('.open-archive')
     let listNote = []
-    for (let i = 0; i < currentNote.length; i++) {
-        listNote[i] = currentNote[i]
-    }
+
     let btnCreateNote = document.querySelector('.create-note')
     let switchOnOf = true
     openBtn.addEventListener('click',()=>{
+        let archiveNote = document.querySelectorAll('.archive')
+        let currentNote = document.querySelectorAll('.current-note')
+        for (let i = 0; i < currentNote.length; i++) {
+            listNote[i] = currentNote[i]
+        }
         if (switchOnOf){
             openBtn.style.outline = '1px solid rgba(0,0,0,0.5)'
             openBtn.style.background = 'rgba(0,0,0, 0.3)'
@@ -385,9 +393,11 @@ const openArchiveNotes = () => {
             for (let i = 0; i < listNote.length; i++) {
                 listNote[i].style.display = 'none'
             }
-            for (let i = 0; i < arrNoteChoose.length; i++) {
-                arrNoteChoose[i].style.display = ''
+            for (let i = 0; i < document.querySelectorAll('.archive').length; i++) {
+                archiveNote[i].style.display = ''
+
             }
+
             switchOnOf = false
         }
         else{
@@ -398,12 +408,15 @@ const openArchiveNotes = () => {
             for (let i = 0; i < listNote.length; i++) {
                 listNote[i].style.display = ''
             }
-            for (let i = 0; i < arrNoteChoose.length; i++) {
-                arrNoteChoose[i].style.display = 'none'
+            for (let i = 0; i < document.querySelectorAll('.archive').length; i++) {
+                archiveNote[i].style.display = 'none'
             }
             switchOnOf = true
         }
+
     })
+
+    AnalystNote()
 }
 openArchiveNotes()
 //----------------------------------------------------------------------------------------------------------------------
